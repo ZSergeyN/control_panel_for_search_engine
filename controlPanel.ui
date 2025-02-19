@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>502</width>
-    <height>668</height>
+    <height>697</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,11 +26,11 @@
       <x>10</x>
       <y>0</y>
       <width>481</width>
-      <height>641</height>
+      <height>671</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="configTab">
      <attribute name="title">
@@ -39,44 +39,6 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QPushButton" name="newConfig">
-            <property name="text">
-             <string>New config</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="openConfig">
-            <property name="text">
-             <string>Open config</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="saveConfigButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Save config</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="loadListFilesButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Load list files</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
         <item>
          <widget class="Line" name="line">
           <property name="orientation">
@@ -159,6 +121,9 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <property name="rightMargin">
+           <number>270</number>
+          </property>
           <item>
            <widget class="QLabel" name="label_3">
             <property name="sizePolicy">
@@ -181,15 +146,24 @@
           <item>
            <widget class="QLineEdit" name="maxResponses">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
             </property>
             <property name="font">
              <font>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LayoutDirection::LeftToRight</enum>
             </property>
            </widget>
           </item>
@@ -216,6 +190,75 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="newConfig">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>New config</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="openConfig">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Open config</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="saveConfigButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Save config</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="loadListFilesButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Load list files</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </item>
      </layout>
@@ -224,11 +267,192 @@
      <attribute name="title">
       <string>requests.json</string>
      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>461</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Request text:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="textRequest">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Requests:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listRequest">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="requestsLoadButton">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Load requests</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveRequestsButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Save Requests</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="requestsClearButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Delete requests</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="requestAddButton">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Add request</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>answers.json</string>
      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>461</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="startSearchEngineButtion">
+           <property name="text">
+            <string>Search Engine</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="statusFile">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_6">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Result:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listResult"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -256,8 +480,8 @@
    <slot>openConfigFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>237</x>
-     <y>56</y>
+     <x>247</x>
+     <y>678</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -272,8 +496,8 @@
    <slot>saveConfigFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>352</x>
-     <y>56</y>
+     <x>362</x>
+     <y>678</y>
     </hint>
     <hint type="destinationlabel">
      <x>218</x>
@@ -288,8 +512,8 @@
    <slot>changeListFiles()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>362</x>
-     <y>40</y>
+     <x>477</x>
+     <y>678</y>
     </hint>
     <hint type="destinationlabel">
      <x>361</x>
@@ -304,12 +528,92 @@
    <slot>newConfigFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>71</x>
-     <y>49</y>
+     <x>79</x>
+     <y>678</y>
     </hint>
     <hint type="destinationlabel">
      <x>8</x>
      <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>requestsLoadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadRequestFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>676</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>requestsClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>delListRequests()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>363</x>
+     <y>676</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>220</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>requestAddButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>676</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveRequestsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>saveRequestFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>676</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>startSearchEngineButtion</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>startSearchEngine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>139</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>30</y>
     </hint>
    </hints>
   </connection>
@@ -319,5 +623,10 @@
   <slot>saveConfigFile()</slot>
   <slot>changeListFiles()</slot>
   <slot>newConfigFile()</slot>
+  <slot>loadRequestFile()</slot>
+  <slot>delListRequests()</slot>
+  <slot>addRequest()</slot>
+  <slot>saveRequestFile()</slot>
+  <slot>startSearchEngine()</slot>
  </slots>
 </ui>
