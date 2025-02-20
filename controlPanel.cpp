@@ -131,9 +131,8 @@
 
     void controlPanelMainWindow::saveRequestFile() {
         QJsonObject requestsText;
-
         QJsonArray requestsListText;
-        for(int row = 0; row < listForFiles->count(); ++row)
+        for(int row = 0; row < listRequest->count(); ++row)
         {
             QListWidgetItem *item = listRequest->item(row);
             requestsListText.push_back(item->text());
@@ -163,7 +162,12 @@
             QProcess file;
             file.execute(path);
             int status = file.exitCode();
-            statusFile->setText(QString::number(status));
+            if(status == 0) {
+                statusFile->setText("OK");
+            } else {
+                statusFile->setText(QString::number(status));
+            }
+
             file.destroyed();
 
             QString docJson;
@@ -175,30 +179,29 @@
             if(!docJson.isNull())
             {
                 listResult->clear();
-
-
                 QJsonDocument textJson = QJsonDocument::fromJson(docJson.toUtf8());
                 if (textJson.isObject()) {
                     QJsonObject json = textJson.object();
-                    QJsonValue answers = json.value("answers");
-                    QJsonObject answersText = answers.toObject();
-
-
-                    QJsonValue req1 = answersText.value("request001");
-                    QJsonObject req1Text = req1.toObject();
-
-
-                    QJsonArray rel = req1Text["relevance"].toArray();
-
-
-                    QList <QVariant> lists = rel.toVariantList();
-                    foreach (QVariant currentFile, lists) {
-                        QJsonObject q = currentFile.toJsonObject();
-
-                        listResult->addItem(QString::number(q["docid"].toInt()) + ": " + QString::number(q["rank"].toInt()));
-
+                    QJsonObject answers = json.value("answers").toObject();
+                    foreach(const QString numAnswer, answers.keys()) {
+                        QJsonObject valueAnswer = answers.value(numAnswer).toObject();
+                        listResult->addItem(numAnswer + ":");
+                        if(valueAnswer["result"].toBool()) {
+                            if(!(valueAnswer.find("relevance") == valueAnswer.end())) {
+                                QJsonArray relevanceList = valueAnswer["relevance"].toArray();
+                                QList <QVariant> lists = relevanceList.toVariantList();
+                                foreach (QVariant resultText, lists) {
+                                    QJsonObject result = resultText.toJsonObject();
+                                    listResult->addItem("\tDocID:  " + QString::number(result["docid"].toInt()));}
+                            } else {
+                                listResult->addItem("\tDocID:  " + QString::number(valueAnswer["docId"].toInt()));  //ToDo
+                            }
+                        } else {
+                            listResult->addItem("\t The result is missing");
+                        }
                     }
                 }
+
             }
         }
     }
