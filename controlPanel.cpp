@@ -11,6 +11,7 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QJsonParseError>
+#include <QForeach>
 
 
 
@@ -23,24 +24,35 @@
         loadListFilesButton->setEnabled(true);
     }
 
-    void controlPanelMainWindow::openConfigFile() {
+    QJsonDocument controlPanelMainWindow::openConfigFile() {
         QString docJson;
         QFile file("config.json");
 
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         docJson = file.readAll();
         file.close();
+
+        QJsonDocument textJson;
+
         if(!docJson.isNull())
         {
-            saveConfigButton->setEnabled(true);
-            loadListFilesButton->setEnabled(true);
-            name->clear();
-            version->clear();
-            maxResponses->clear();
-            listForFiles->clear();
+            textJson = QJsonDocument::fromJson(docJson.toUtf8());
+        }
+        return textJson;
+    }
 
-            QJsonDocument textJson = QJsonDocument::fromJson(docJson.toUtf8());
+    void controlPanelMainWindow::printConfigFile() {
+
+        QJsonDocument textJson = openConfigFile();
             if (textJson.isObject()) {
+
+                saveConfigButton->setEnabled(true);
+                loadListFilesButton->setEnabled(true);
+                name->clear();
+                version->clear();
+                maxResponses->clear();
+                listForFiles->clear();
+
                 QJsonObject json = textJson.object();
                 QJsonValue config = json.value("config");
                 if (config.isObject())
@@ -57,8 +69,6 @@
                     listForFiles->addItem(currentFile.toString());
                 }
             }
-        }
-
     }
 
     void controlPanelMainWindow::saveConfigFile() {
@@ -103,18 +113,18 @@
 
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         docJson = file.readAll();
-        file.close();
-        if(!docJson.isNull())
+        file.close();if(!docJson.isNull())
         {
             saveRequestsButton->setEnabled(true);
             requestsClearButton->setEnabled(true);
-            listRequest->clear();;
+            listRequest->clear();
 
             QJsonDocument textJson = QJsonDocument::fromJson(docJson.toUtf8());
             if (textJson.isObject()) {
                 QJsonObject json = textJson.object();
                 QJsonValue requestsText = json.value("requests");
                 QJsonArray requestsList = requestsText.toArray();
+
                 QList <QVariant> lists = requestsList.toVariantList();
                 foreach (QVariant currentFile, lists) {
                     listRequest->addItem(currentFile.toString());
@@ -178,23 +188,35 @@
             fileResult.close();
             if(!docJson.isNull())
             {
+
                 listResult->clear();
                 QJsonDocument textJson = QJsonDocument::fromJson(docJson.toUtf8());
                 if (textJson.isObject()) {
+
+                    QJsonDocument listDocsJson = openConfigFile();
+                    QJsonObject listDos = listDocsJson.object();
+                    QJsonValue files = listDos.value("files");
+                    QJsonArray filesList = files.toArray();
+                    QList <QVariant> docs = filesList.toVariantList();
+
                     QJsonObject json = textJson.object();
                     QJsonObject answers = json.value("answers").toObject();
                     foreach(const QString numAnswer, answers.keys()) {
                         QJsonObject valueAnswer = answers.value(numAnswer).toObject();
                         listResult->addItem(numAnswer + ":");
                         if(valueAnswer["result"].toBool()) {
+                            QString docName;
                             if(!(valueAnswer.find("relevance") == valueAnswer.end())) {
                                 QJsonArray relevanceList = valueAnswer["relevance"].toArray();
                                 QList <QVariant> lists = relevanceList.toVariantList();
                                 foreach (QVariant resultText, lists) {
                                     QJsonObject result = resultText.toJsonObject();
-                                    listResult->addItem("\tDocID:  " + QString::number(result["docid"].toInt()));}
+                                    docName = docs[result["docid"].toInt()].toString();
+                                    listResult->addItem("\t" + docName.right(docName.size() - 11));
+                                }
                             } else {
-                                listResult->addItem("\tDocID:  " + QString::number(valueAnswer["docId"].toInt()));  //ToDo
+                                docName = docs[valueAnswer["docId"].toInt()].toString();    // ToDo
+                                listResult->addItem("\t" + docName.right(docName.size() - 11));
                             }
                         } else {
                             listResult->addItem("\t The result is missing");
