@@ -496,22 +496,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>openConfig</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>openConfigFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>247</x>
-     <y>678</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>291</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>saveConfigButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -556,22 +540,6 @@
     <hint type="destinationlabel">
      <x>8</x>
      <y>73</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>requestsLoadButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>loadRequestFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>676</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>248</y>
     </hint>
    </hints>
   </connection>
@@ -639,16 +607,48 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>requestsLoadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadRequestFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>654</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>551</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openConfig</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>printConfigFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>645</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>352</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>openConfigFile()</slot>
+  <slot>printConfigFile()</slot>
   <slot>saveConfigFile()</slot>
   <slot>changeListFiles()</slot>
   <slot>newConfigFile()</slot>
-  <slot>loadRequestFile()</slot>
   <slot>delListRequests()</slot>
   <slot>addRequest()</slot>
   <slot>saveRequestFile()</slot>
   <slot>startSearchEngine()</slot>
+  <slot>loadRequestFile()</slot>
  </slots>
 </ui>
