@@ -36,7 +36,9 @@ public:
 public slots:
     void newConfigFile();
 
-    void openConfigFile();
+    QJsonDocument openConfigFile();
+
+    void printConfigFile();
 
     void saveConfigFile();
 
