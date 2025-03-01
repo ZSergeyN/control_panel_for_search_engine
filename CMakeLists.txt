@@ -14,3 +14,5 @@ add_executable(ControlPanel main.cpp controlPanel.h controlPanel.ui
     controlPanel.cpp)
 
 target_link_libraries(ControlPanel Qt6::Widgets Qt6::Core Qt6::Gui)
+
+set_target_properties(ControlPanel PROPERTIES LINK_FLAGS "-mwindows")
